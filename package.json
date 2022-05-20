@@ -1,0 +1,46 @@
+{
+  "name": "typed-pub-sub",
+  "version": "0.0.0-1",
+  "description": "Builds Redux reducers easily",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prestart": "npm run build",
+    "start": "tsc -w",
+    "dev": "node ./lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ofir-zeitoun/typed-pub-sub.git"
+  },
+  "keywords": [
+    "Redux",
+    "reducer",
+    "react"
+  ],
+  "author": "Ofir Zeitoun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ofir-zeitoun/typed-pub-sub/issues"
+  },
+  "homepage": "https://github.com/ofir-zeitoun/typed-pub-sub#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testRegex": "^.+\\.spec\\.ts$"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {}
+}

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "typed-pub-sub": "file:.."
+    "oz-typed-pub-sub": "file:.."
   },
   "devDependencies": {},
   "scripts": {

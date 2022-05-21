@@ -1,4 +1,4 @@
-import { createPubSubClient } from "typed-pub-sub";
+import { createPubSubClient } from "oz-typed-pub-sub";
 
 const getClient = createPubSubClient({
   created: {

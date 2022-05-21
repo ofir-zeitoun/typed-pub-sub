@@ -1,5 +1,5 @@
 {
-  "name": "typed-pub-sub",
+  "name": "oz-typed-pub-sub",
   "version": "0.0.0-1",
   "description": "Builds Redux reducers easily",
   "main": "lib/index.js",

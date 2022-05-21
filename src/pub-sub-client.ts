@@ -33,17 +33,6 @@ export function createPubSubClient<T extends Object>(
 
       return {
         ...acc,
-        // ...["on", "once"].reduce(
-        //   (acc1, prefix) => ({
-        //     ...acc1,
-        //     [`${prefix}${messageTypeName}`]: (callback: (payload: any) => any) => {
-        //       const handleMessage = ignoreMeWrapper(callback);
-        //       eventEmitter.on(messageTypeName, handleMessage, clientId);
-        //       return () => eventEmitter.removeListener(messageTypeName, handleMessage);
-        //     }
-        //   }),
-        //   {}
-        // ),
         [`on${messageTypeName}`]: (callback: (payload: any) => any) => {
           const handleMessage = ignoreMeWrapper(callback);
           eventEmitter.on(messageTypeName, handleMessage, clientId);

@@ -1,27 +1,32 @@
 import { createPubSubClient } from "oz-typed-pub-sub";
 
 const getClient = createPubSubClient({
-  created: {
-    by: "ofir",
-    date: new Date()
-  },
-  send: true
+  message: {
+    by: "",
+    id: 0
+  }
 });
 
 const c1 = getClient();
 const c2 = getClient();
 
-const c1UnsubscribeCreated = c1.onCreated(console.warn);
-c2.onCreated(console.error);
-c2.setCreated({ by: "event", date: new Date() });
-c1.setCreated({ by: "happened", date: new Date() });
-c1UnsubscribeCreated();
-c2.setCreated({ by: "Will not be invoked", date: new Date() });
-c1.onSend(console.warn);
-c2.setSend(false);
-
-c1.onceSend((payload: boolean) => {
-  console.log("payload: ", payload);
+const c1UnsubscribeMessage = c1.onMessage(payload => {
+  console.log(`C1 handler: ${payload.by} #${payload.id}`);
 });
-c2.setSend(true);
-c2.setSend(false);
+
+c2.onMessage(payload => {
+  console.log(`C2 handler: ${payload.by} #${payload.id}`);
+});
+
+c1.setMessage({ by: "c1", id: 1 });
+c2.setMessage({ by: "c2", id: 2 });
+
+c1UnsubscribeMessage();
+c2.setMessage({ by: "c2", id: 3 }); // will not be handled
+
+c1.onceMessage(payload => {
+  console.log(`C1 handler (once): ${payload.by} #${payload.id}`);
+});
+
+c2.setMessage({ by: "c2", id: 4 });
+c2.setMessage({ by: "c2", id: 5 }); // will not be handled

@@ -26,7 +26,7 @@ export function createPubSubClient<T extends Object>(
         callback(payload);
       };
     };
-    debugger;
+
     return (Object.entries(messages) as Entry<T>[]).reduce((acc, [messageName]) => {
       const messageTypeName =
         (messageName as string)[0].toUpperCase() + (messageName as string).substring(1);

@@ -1,2 +1,2 @@
 export * from "./pub-sub-client";
-export * from "./types";
+export * from "./handlers";

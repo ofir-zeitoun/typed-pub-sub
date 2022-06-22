@@ -1,4 +1,4 @@
-import { createPubSubClient } from "oz-typed-pub-sub";
+import { createMessageHandler, createPubSubClient } from "oz-typed-pub-sub";
 
 const getClient = createPubSubClient({
   message: {
@@ -30,3 +30,17 @@ c1.onceMessage(payload => {
 
 c2.setMessage({ by: "c2", id: 4 });
 c2.setMessage({ by: "c2", id: 5 }); // will not be handled
+
+console.log();
+
+const handlers = createMessageHandler<string>();
+
+const unSubHandleA = handlers.subscribe((s, next) => {
+  next();
+  return s.startsWith("a") ? "A" : undefined;
+});
+const unSubHandle5 = handlers.subscribe(s => (s.length === 5 ? 5 : undefined));
+
+console.log("handlers: ");
+const res = handlers.handle("aaaaa");
+console.log("res: ", res);

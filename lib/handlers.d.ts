@@ -2,6 +2,5 @@ declare type HandlerType<T> = (message: T, next: () => void) => undefined | unkn
 export declare function createMessageHandler<T>(): {
     subscribe(cb: HandlerType<T>): () => void;
     handle(message: T): undefined | unknown;
-    toString(): string;
 };
 export {};

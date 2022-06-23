@@ -11,7 +11,7 @@ export function createMessageHandler<T>() {
       };
     },
 
-    handle(message: T): undefined | unknown {
+    publish(message: T): undefined | unknown {
       let res: unknown = undefined;
       for (const handler of Array.from(subscribers)) {
         let stopLoop = true;

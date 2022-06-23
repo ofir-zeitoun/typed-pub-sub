@@ -36,11 +36,11 @@ console.log();
 const handlers = createMessageHandler<string>();
 
 const unSubHandleA = handlers.subscribe((s, next) => {
-  next();
+  next(); // keep this value, but if other handler have value, override it
   return s.startsWith("a") ? "A" : undefined;
 });
 const unSubHandle5 = handlers.subscribe(s => (s.length === 5 ? 5 : undefined));
 
 console.log("handlers: ");
-const res = handlers.handle("aaaaa");
+const res = handlers.publish("aaaaa");
 console.log("res: ", res);
